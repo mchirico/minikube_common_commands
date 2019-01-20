@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssh-server
+spec:
+  selector:
+    matchLabels:
+      run: ssh-server
+  replicas: 3
+  template:
+    metadata:
+       labels:
+          run: ssh-server
+    spec:
+      volumes:
+        - name: mce-pv-storage
+          persistentVolumeClaim:
+            claimName: mce-pv-claim    
+      containers:
+        - name: mce-pv-container
+          image: us.gcr.io/mchirico/ssh:pub
+          ports:
+            - containerPort: 22
+              name: "task-ssh-server"
+          volumeMounts:
+            - mountPath: "/data"
+              name: mce-pv-storage

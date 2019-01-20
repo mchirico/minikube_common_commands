@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: ssh-server
+spec:
+  volumes:
+    - name: mce-pv-storage
+      persistentVolumeClaim:
+       claimName: mce-pv-claim
+  containers:
+    - name: mce-pv-container
+      image: us.gcr.io/mchirico/ssh:pub
+      ports:
+        - containerPort: 22
+          name: "task-ssh-server"
+      volumeMounts:
+        - mountPath: "/data"
+          name: mce-pv-storage

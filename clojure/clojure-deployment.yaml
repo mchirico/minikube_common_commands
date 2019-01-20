@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
+  labels:
+    run: clojure-server
+  name: clojure-server
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: clojure-server
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: clojure-server
+    spec:
+      containers:
+      - image: us.gcr.io/mchirico/clojure:inst
+        imagePullPolicy: Always
+        name: clojure-server
+        command: ["java","-jar","/run/app.jar"]
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 80
+          protocol: TCP	  
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+
