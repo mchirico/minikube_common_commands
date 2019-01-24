@@ -1,4 +1,4 @@
-# minikube_common_commands
+# minikube common commands
 
 ## Pulling GCP Images
 
