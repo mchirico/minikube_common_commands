@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gog-server
+spec:
+  selector:
+    matchLabels:
+      run: gog-server
+  replicas: 3
+  template:
+    metadata:
+       labels:
+          run: gog-server
+    spec:
+      volumes:
+        - name: gog-pv-storage
+          persistentVolumeClaim:
+            claimName: gog-pv-claim    
+      containers:
+        - name: gog-pv-container
+          image: us.gcr.io/mchirico/gog:node
+          ports:
+            - containerPort: 22
+              name: "task-gog-server"
+          volumeMounts:
+            - mountPath: "/data"
+              name: gog-pv-storage
