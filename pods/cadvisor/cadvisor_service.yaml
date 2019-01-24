@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cadvisor-server
+  labels:
+    run: cadvisor-server
+spec:
+  selector:
+    app: cadvisor
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer
+
+  
+
+
+
