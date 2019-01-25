@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-server
+  labels:
+    app: gogchart
+spec:
+  selector:
+    app: gogchart
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: gog
+  - port: 9100
+    targetPort: 9100
+    name: node
+  type: LoadBalancer
+  loadBalancerIP: 35.202.88.179
+  
+
+
+
