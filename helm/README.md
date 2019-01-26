@@ -95,7 +95,8 @@ Walking through creating a helm chart for an existing deployment.
 The existing deployment can be found in directory `gcpnginx_raw`.
 
 
-First 
+First you'll need to create a cluster.  This example is based
+upon [Google's helm concourse](https://cloud.google.com/solutions/continuous-integration-helm-concourse) example.
 
 ```bash
 
@@ -124,14 +125,11 @@ gsutil mb -l us-central1 gs://$BUCKET
 helm gcs init gs://$BUCKET
 
 
-
-
-
-
-
 ```
 
+### Raw Helm
 
+We'll start with an empty helm project and build from there.
 
 ```bash
 helm create gcpnginx
@@ -148,5 +146,14 @@ helm install --dry-run --debug ./gcpnginx
 You want to try previous examples
 
 ```bash
-helm install --replace --name gogexample ./gogchart 
+helm install --replace --name gogexample ./gogchart --set service.type=NodePort
+
+```
+
+
+But, you'll need a way to troubleshoot services.
+
+
+```bash
+kubectl run -i --tty ssh --image=us.gcr.io/mchirico/ssh:pub -- /bin/bash
 ```

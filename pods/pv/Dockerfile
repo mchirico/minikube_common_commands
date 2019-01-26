@@ -18,3 +18,6 @@ CMD ["/usr/sbin/sshd", "-D"]
 
 # docker build -t us.gcr.io/mchirico/ssh:pub .
 # docker run -p 8022:22 --rm -it  us.gcr.io/mchirico/ssh:pub
+
+# kubectl run -i --tty ssh --image=us.gcr.io/mchirico/ssh:pub -- /bin/bash
+
