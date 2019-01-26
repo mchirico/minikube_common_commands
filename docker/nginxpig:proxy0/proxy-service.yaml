@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy-server
+  labels:
+    run: proxy-server
+spec:
+  selector:
+    run: proxy-server
+  ports:
+  - port: 443
+    targetPort: 8080
+  type: LoadBalancer
+  loadBalancerIP: 35.202.88.179
+  
+
+
+
