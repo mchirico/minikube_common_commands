@@ -88,3 +88,20 @@ helm install --replace --name gogexample gogchart-0.1.0.tgz --set service.type=N
 
 
 ```
+
+## GCP
+
+Walking through creating a helm chart for an existing deployment.
+The existing deployment can be found in directory `gcpnginx_raw`.
+
+
+First 
+```bash
+gcloud container clusters create mini --machine-type=g1-small --network=proxy --subnetwork=proxy-sub --num-nodes=3
+```
+
+```bash
+helm create gcpnginx
+
+
+```
