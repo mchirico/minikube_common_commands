@@ -100,9 +100,14 @@ upon [Google's helm concourse](https://cloud.google.com/solutions/continuous-int
 
 ```bash
 
-gcloud container clusters create concourse --machine-type=g1-small --image-type ubuntu  --scopes cloud-source-repos-ro,storage-full
+gcloud container clusters create concourse --machine-type=g1-small --image-type ubuntu --num-nodes=2  --scopes cloud-source-repos-ro,storage-full
+
+# If you don't have a default region
+gcloud container clusters create concourse --machine-type=g1-small --zone us-central1-c --image-type ubuntu  --scopes cloud-source-repos-ro,storage-full
 
 
+# Note, you may need to resize later
+gcloud container clusters resize concourse --size=3 
 
 ```
 
@@ -147,6 +152,9 @@ You want to try previous examples
 
 ```bash
 helm install --replace --name gogexample ./gogchart --set service.type=NodePort
+
+# If you need to delete...
+helm delete gogexample
 
 ```
 
