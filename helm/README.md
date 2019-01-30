@@ -165,3 +165,55 @@ But, you'll need a way to troubleshoot services.
 ```bash
 kubectl run -i --tty ssh --image=us.gcr.io/mchirico/ssh:pub -- /bin/bash
 ```
+
+## Auth Project
+
+Once it's done, you'll be able to authenticate using
+the following [url](https://bit.ly/2sMoemb).
+
+
+```bash
+helm install --replace --name nodechart ./nodechart --set service.type=NodePort
+
+# If you need to delete...
+helm delete nodechart
+
+```
+
+```bash
+cd pig.za261.io
+k apply -f nginxauth-service.yaml
+k apply -f nginxauth-ingress.yaml
+k apply -f nginxauth-deployment.yaml
+
+```
+
+### Configuration Check:
+
+```bash
+k get service
+NAME                 TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                         AGE
+kubernetes           ClusterIP      10.3.240.1     <none>          443/TCP                         4h
+nginxauth            LoadBalancer   10.3.255.175   35.202.88.179   443:31614/TCP,9100:32446/TCP    16m
+nginxauth-server     NodePort       10.3.255.246   <none>          8080:31116/TCP                  47m
+nodechart-gogchart   NodePort       10.3.254.109   <none>          9100:31950/TCP,4591:31355/TCP   1h
+
+```
+
+## Trouble Shooting
+
+```bash
+k get po
+NAME                                  READY     STATUS    RESTARTS   AGE
+nginxauth-5ddb6fb7cb-sjkz5            1/1       Running   0          6m
+nginxauth-5ddb6fb7cb-vvjqw            1/1       Running   0          6m
+nodechart-gogchart-6b568c79b9-2hk7r   1/1       Running   0          1h
+
+```
+
+Attach to node
+
+```bash
+kubectl exec -it nginxauth-5ddb6fb7cb-vvjqw -- /bin/bash
+
+```

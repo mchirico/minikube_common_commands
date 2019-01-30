@@ -5,14 +5,14 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   generation: 1
   labels:
-    run: hello-server
-  name: hello-server
+    app: nginxauth
+  name: nginxauth
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      run: hello-server
+      app: nginxauth
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -22,12 +22,12 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        run: hello-server
+        app: nginxauth
     spec:
       containers:
       - image: us.gcr.io/mchirico/nginxauth:v0
         imagePullPolicy: Always
-        name: hello-server
+        name: nginxauth
         ports:
         - containerPort: 8080
           protocol: TCP

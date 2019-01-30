@@ -1,0 +1,9 @@
+Dockerfile:
+/Users/mchirico/aws/gopath/src/googleTest/nginxAuth
+
+
+https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&state=\
+state_parameter_passthrough_value&redirect_uri=https://pig.za261.io/auth/google/callback&response_type=code&client_id=271373272001-nam8ju55oqro7aat0apgnnfv293jeo6a.apps.googleusercontent.com
+https://bit.ly/2sMoemb
+
+
