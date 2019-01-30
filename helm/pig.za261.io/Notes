@@ -1,5 +1,9 @@
 Dockerfile:
-/Users/mchirico/aws/gopath/src/googleTest/nginxAuth
+
+Note: New spot is:
+/Users/mchirico/aws/gopath/src/nginxauth:v0
+  or old
+  /Users/mchirico/aws/gopath/src/googleTest/nginxAuth
 
 
 https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&state=\
