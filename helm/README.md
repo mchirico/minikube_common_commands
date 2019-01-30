@@ -171,6 +171,13 @@ kubectl run -i --tty ssh --image=us.gcr.io/mchirico/ssh:pub -- /bin/bash
 Once it's done, you'll be able to authenticate using
 the following [url](https://bit.ly/2sMoemb).
 
+### Easy Install (buildAuth.sh)
+```bash
+buildAuth.sh
+```
+
+### Manual Steps
+
 
 ```bash
 helm install --replace --name nodechart ./nodechart --set service.type=NodePort
